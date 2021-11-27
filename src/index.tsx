@@ -1,11 +1,11 @@
 import React from "react";
-
-import { Listings } from "./section";
-
 import ReactDOM from "react-dom";
 
-import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import ApolloClient from "apollo-boost";
+
+import { Listings } from "./section";
+import "./styles/index.css";
 
 const client = new ApolloClient({
   uri: "/api",
