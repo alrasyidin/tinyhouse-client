@@ -10,12 +10,14 @@ specifiers:
   '@types/node': ^12.20.37
   '@types/react': ^17.0.37
   '@types/react-dom': ^17.0.11
+  '@types/react-router-dom': ^5.3.2
   antd: ~3.26.20
   apollo-boost: ^0.4.9
   graphql: ^16.0.1
   react: ^17.0.2
   react-apollo: ^3.1.5
   react-dom: ^17.0.2
+  react-router-dom: ^6.0.2
   react-scripts: 4.0.3
   typescript: ^4.5.2
   web-vitals: ^1.1.2
@@ -28,12 +30,14 @@ dependencies:
   '@types/node': 12.20.37
   '@types/react': 17.0.37
   '@types/react-dom': 17.0.11
+  '@types/react-router-dom': 5.3.2
   antd: 3.26.20_react-dom@17.0.2+react@17.0.2
   apollo-boost: 0.4.9_graphql@16.0.1
   graphql: 16.0.1
   react: 17.0.2
   react-apollo: 3.1.5_e8d0abbd38316d64d28fbd17f931b12c
   react-dom: 17.0.2_react@17.0.2
+  react-router-dom: 6.0.2_react-dom@17.0.2+react@17.0.2
   react-scripts: 4.0.3_react@17.0.2+typescript@4.5.2
   typescript: 4.5.2
   web-vitals: 1.1.2
@@ -2383,6 +2387,10 @@ packages:
       graphql: 16.0.1
     dev: true
 
+  /@types/history/4.7.9:
+    resolution: {integrity: sha512-MUc6zSmU3tEVnkQ78q0peeEjKWPUADMlC/t++2bI8WnAG2tvYRPIgHG8lWkXwqc8MsUF6Z2MOf+Mh5sazOmhiQ==}
+    dev: false
+
   /@types/html-minifier-terser/5.1.2:
     resolution: {integrity: sha512-h4lTMgMJctJybDp8CQrxTUiiYmedihHWkjnF/8Pxseu2S6Nlfcy8kwboQ8yejh456rP2yWoEVm1sS/FVsfM48w==}
     dev: false
@@ -2449,6 +2457,21 @@ packages:
   /@types/react-dom/17.0.11:
     resolution: {integrity: sha512-f96K3k+24RaLGVu/Y2Ng3e1EbZ8/cVJvypZWd7cy0ofCBaf2lcM46xNhycMZ2xGwbBjRql7hOlZ+e2WlJ5MH3Q==}
     dependencies:
+      '@types/react': 17.0.37
+    dev: false
+
+  /@types/react-router-dom/5.3.2:
+    resolution: {integrity: sha512-ELEYRUie2czuJzaZ5+ziIp9Hhw+juEw8b7C11YNA4QdLCVbQ3qLi2l4aq8XnlqM7V31LZX8dxUuFUCrzHm6sqQ==}
+    dependencies:
+      '@types/history': 4.7.9
+      '@types/react': 17.0.37
+      '@types/react-router': 5.1.17
+    dev: false
+
+  /@types/react-router/5.1.17:
+    resolution: {integrity: sha512-RNSXOyb3VyRs/EOGmjBhhGKTbnN6fHWvy5FNLzWfOWOGjgVUKqJZXfpKzLmgoU8h6Hj8mpALj/mbXQASOb92wQ==}
+    dependencies:
+      '@types/history': 4.7.9
       '@types/react': 17.0.37
     dev: false
 
@@ -6498,6 +6521,12 @@ packages:
 
   /hex-color-regex/1.1.0:
     resolution: {integrity: sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==}
+    dev: false
+
+  /history/5.1.0:
+    resolution: {integrity: sha512-zPuQgPacm2vH2xdORvGGz1wQMuHSIB56yNAy5FnLuwOwgSYyPKptJtcMm6Ev+hRGeS+GzhbmRacHzvlESbFwDg==}
+    dependencies:
+      '@babel/runtime': 7.16.3
     dev: false
 
   /hmac-drbg/1.0.1:
@@ -11156,6 +11185,27 @@ packages:
   /react-refresh/0.8.3:
     resolution: {integrity: sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /react-router-dom/6.0.2_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-cOpJ4B6raFutr0EG8O/M2fEoyQmwvZWomf1c6W2YXBZuFBx8oTk/zqjXghwScyhfrtnt0lANXV2182NQblRxFA==}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      history: 5.1.0
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      react-router: 6.0.2_react@17.0.2
+    dev: false
+
+  /react-router/6.0.2_react@17.0.2:
+    resolution: {integrity: sha512-8/Wm3Ed8t7TuedXjAvV39+c8j0vwrI5qVsYqjFr5WkJjsJpEvNSoLRUbtqSEYzqaTUj1IV+sbPJxvO+accvU0Q==}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      history: 5.1.0
+      react: 17.0.2
     dev: false
 
   /react-scripts/4.0.3_react@17.0.2+typescript@4.5.2:

@@ -79,7 +79,7 @@ export const Listings = ({ title }: Props) => {
     ></List>
   ) : null;
 
-  const deleteListingErrorMessage = true ? (
+  const deleteListingErrorMessage = loading ? (
     <Alert
       type="error"
       message="Uh oh! Something went wrong with deleting - please try again"

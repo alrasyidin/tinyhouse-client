@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 
-import { Listings } from "./section";
+import { Home, Host, Listing, Listings, NotFound, User } from "./section";
 import "./styles/index.css";
 
 const client = new ApolloClient({
