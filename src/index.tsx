@@ -5,7 +5,7 @@ import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import { Viewer } from "./lib/types";
 
-import { Layout } from "antd";
+import { Affix, Layout } from "antd";
 
 import {
   Home,
@@ -15,6 +15,7 @@ import {
   NotFound,
   User,
   Login,
+  AppHeader,
 } from "./section";
 import "./styles/index.css";
 
@@ -32,6 +33,9 @@ const App = () => {
   return (
     <Router>
       <Layout id="app">
+        <Affix offsetTop={0}>
+          <AppHeader></AppHeader>
+        </Affix>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/host" component={Host} />

@@ -12,6 +12,28 @@ html {
   min-height: 100vh;
 }
 
+.app-header {
+  display: flex;
+  background: #fff;
+  box-shadow: 0 4px 8px #f0f1f2;
+  padding: 0;
+}
+
+.app-header__logo-search-section {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.app-header__logo {
+  padding: 0 20px;
+  display: inline-block;
+}
+
+.app-header__logo img {
+  width: 36px;
+}
+
 .log-in {
   display: flex;
   justify-content: center;
