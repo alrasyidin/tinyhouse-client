@@ -34,6 +34,17 @@ html {
   width: 36px;
 }
 
+.app-header__menu-section {
+  float: right;
+}
+
+.menu {
+  line-height: 63px;
+  border: 0;
+  width: 100%;
+  padding: 0 20px;
+}
+
 .log-in {
   display: flex;
   justify-content: center;
