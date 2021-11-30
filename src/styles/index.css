@@ -55,3 +55,10 @@ html {
   text-align: left;
   white-space: nowrap;
 }
+
+.error-banner {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100%;
+}

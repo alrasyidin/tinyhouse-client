@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
+import { Viewer } from "./lib/types";
+
 import { Layout } from "antd";
 
 import {
@@ -16,7 +18,17 @@ import {
 } from "./section";
 import "./styles/index.css";
 
+const initialViewer: Viewer = {
+  id: null,
+  token: null,
+  avatar: null,
+  hasWallet: null,
+  didRequest: false,
+};
+
 const App = () => {
+  const [viewer, setViewer] = useState<Viewer>(initialViewer);
+  console.log(viewer);
   return (
     <Router>
       <Layout id="app">
@@ -25,8 +37,12 @@ const App = () => {
           <Route exact path="/host" component={Host} />
           <Route exact path="/listings/:location?" component={Listings} />
           <Route exact path="/listing/:id" component={Listing} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/user" component={User} />
+          <Route
+            exact
+            path="/login"
+            render={(props) => <Login {...props} setViewer={setViewer} />}
+          />
+          <Route exact path="/user/:id" component={User} />
           <Route component={NotFound} />
         </Switch>
       </Layout>
