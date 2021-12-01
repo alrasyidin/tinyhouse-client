@@ -1,4 +1,3 @@
-import React, { forwardRef } from "react";
 import { Layout } from "antd";
 
 import logo from "./assets/tinyhouse-logo.png";

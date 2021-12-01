@@ -27,7 +27,18 @@ import {
 } from "./section";
 import "./styles/index.css";
 import { AppHeaderSkeleton, ErrorBanner } from "./lib/components";
-import { displayErrorMessage } from "./lib/utils";
+
+const client = new ApolloClient({
+  uri: "/api",
+  request: async (operation) => {
+    const token = sessionStorage.getItem("token");
+    operation.setContext({
+      headers: {
+        "X-CSRF-TOKEN": token || "",
+      },
+    });
+  },
+});
 
 const initialViewer: Viewer = {
   id: null,
@@ -43,6 +54,12 @@ const App = () => {
     onCompleted: (data) => {
       if (data && data.logIn) {
         setViewer(data.logIn);
+
+        if (data.logIn.token) {
+          sessionStorage.setItem("token", data.logIn.token);
+        } else {
+          sessionStorage.removeItem("token");
+        }
       }
     },
   });
@@ -92,10 +109,6 @@ const App = () => {
     </Router>
   );
 };
-
-const client = new ApolloClient({
-  uri: "/api",
-});
 
 ReactDOM.render(
   <ApolloProvider client={client}>
