@@ -19,6 +19,10 @@ html {
   padding: 0;
 }
 
+.app__affix-header {
+  z-index: 99;
+}
+
 .app-header__logo-search-section {
   display: flex;
   flex-grow: 1;

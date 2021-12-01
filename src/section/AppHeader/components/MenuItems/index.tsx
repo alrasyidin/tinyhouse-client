@@ -15,7 +15,7 @@ const { Item, SubMenu } = Menu;
 
 interface Props {
   viewer: Viewer;
-  setViewer: (Viewer: Viewer) => void;
+  setViewer: (viewer: Viewer) => void;
 }
 
 export const MenuItems = ({ viewer, setViewer }: Props) => {

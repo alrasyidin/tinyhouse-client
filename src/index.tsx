@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import { Viewer } from "./lib/types";
+import { useMutation } from "react-apollo";
+
+import {
+  LogIn as LogInData,
+  LogInVariables,
+} from "./lib/graphql/mutations/LogIn/__generated__/LogIn";
+import { LOG_IN } from "./lib/graphql/mutations";
 
 import { Affix, Layout } from "antd";
 
@@ -29,13 +37,26 @@ const initialViewer: Viewer = {
 
 const App = () => {
   const [viewer, setViewer] = useState<Viewer>(initialViewer);
-  console.log(viewer);
+  const [logIn, { error }] = useMutation<LogInData, LogInVariables>(LOG_IN, {
+    onCompleted: (data) => {
+      if (data && data.logIn) {
+        setViewer(data.logIn);
+      }
+    },
+  });
+  const logInRef = useRef(logIn);
+
+  useEffect(() => {
+    logInRef.current();
+  }, []);
+
   return (
     <Router>
       <Layout id="app">
-        <Affix offsetTop={0}>
+        <Affix offsetTop={0} className="app__affix-header">
           <AppHeader viewer={viewer} setViewer={setViewer} />
         </Affix>
+
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/host" component={Host} />
