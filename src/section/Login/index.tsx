@@ -1,24 +1,24 @@
 import React, { useEffect, useRef } from "react";
 import { Redirect } from "react-router-dom";
 import { Layout, Typography, Card, Spin } from "antd";
-import GoogleLogo from "./assets/google_logo.jpg";
 import { Viewer } from "../../lib/types";
-import {
-  useLazyQuery,
-  useMutation,
-} from ".pnpm/@apollo+react-hooks@3.1.5_e8d0abbd38316d64d28fbd17f931b12c/node_modules/@apollo/react-hooks";
+import { useLazyQuery, useMutation } from "react-apollo";
+import { ErrorBanner } from "../../lib/components";
+
+import GoogleLogo from "./assets/google_logo.jpg";
+
 import { AuthUrl as AuthUrlData } from "../../lib/graphql/queries/AuthUrl/__generated__/AuthUrl";
-import { AUTH_URL } from "../../lib/graphql/queries";
+
 import {
   LogIn as LogInData,
   LogInVariables,
 } from "../../lib/graphql/mutations/LogIn/__generated__/LogIn";
-import { LOG_IN } from "../../lib/graphql/mutations";
 import {
   displayErrorMessage,
   displaySuccessNotification,
 } from "../../lib/utils";
-import { ErrorBanner } from "../../lib/components/ErrorBanner";
+import { LOG_IN } from "../../lib/graphql/mutations";
+import { AUTH_URL } from "../../lib/graphql/queries";
 
 const { Content } = Layout;
 const { Text, Title } = Typography;

@@ -42,6 +42,20 @@ html {
   float: right;
 }
 
+.app-skeleton {
+  height: 100%;
+  display: flex;
+  background-color: #fff;
+}
+
+.app-skeleton__spin-section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .menu {
   line-height: 63px;
   border: 0;

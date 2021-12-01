@@ -13,7 +13,7 @@ import {
 } from "./lib/graphql/mutations/LogIn/__generated__/LogIn";
 import { LOG_IN } from "./lib/graphql/mutations";
 
-import { Affix, Layout } from "antd";
+import { Affix, Layout, Spin } from "antd";
 
 import {
   Home,
@@ -26,6 +26,8 @@ import {
   AppHeader,
 } from "./section";
 import "./styles/index.css";
+import { AppHeaderSkeleton, ErrorBanner } from "./lib/components";
+import { displayErrorMessage } from "./lib/utils";
 
 const initialViewer: Viewer = {
   id: null,
@@ -50,9 +52,25 @@ const App = () => {
     logInRef.current();
   }, []);
 
+  if (!viewer.didRequest && !error) {
+    return (
+      <Layout className="app-skeleton">
+        <AppHeaderSkeleton />
+        <div className="app-skeleton__spin-section">
+          <Spin size="large" tip="Loading TinyHouse" />
+        </div>
+      </Layout>
+    );
+  }
+
+  const LogInErrorBannerElement = error ? (
+    <ErrorBanner description="We weren't able to verify if you were logged in. Please try again later." />
+  ) : null;
+
   return (
     <Router>
       <Layout id="app">
+        {LogInErrorBannerElement}
         <Affix offsetTop={0} className="app__affix-header">
           <AppHeader viewer={viewer} setViewer={setViewer} />
         </Affix>
