@@ -12,6 +12,14 @@ html {
   min-height: 100vh;
 }
 
+.error-banner {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+}
+
 .app-header {
   display: flex;
   background: #fff;
@@ -107,9 +115,25 @@ html {
   white-space: nowrap;
 }
 
-.error-banner {
-  position: fixed;
-  top: 0px;
-  left: 0;
-  width: 100%;
+.user {
+  padding: 60px 20px;
+}
+
+.user-profile {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.user-profile__avatar {
+  text-align: center;
+}
+
+.user-profile__details h4.ant-typography {
+  color: #1d226c;
+}
+.user-profile__details div.ant-typography {
+  font-size: 15px;
+}
+.user-profile__details-cta {
+  margin-bottom: 20px;
 }
