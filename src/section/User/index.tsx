@@ -40,11 +40,13 @@ export const User = ({
     },
   });
 
-  const user: UserData["user"] | null = data ? data.user : null;
+  const user = data ? data.user : null;
 
   const userListings = user ? user.listings : null;
   const userBookings = user ? user.bookings : null;
-
+  if (listingsPage >= 2) {
+    console.log(data);
+  }
   const userProfileComponent = user ? (
     <UserProfile user={user} viewerIsUser={viewer.id === match.params.id} />
   ) : null;

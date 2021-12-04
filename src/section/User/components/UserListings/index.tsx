@@ -32,7 +32,10 @@ export const UserListings = ({
         position: "top",
         showLessItems: true,
         hideOnSinglePage: true,
-        onChange: (page: number) => setListingsPage(page),
+        onChange: (page: number) => {
+          console.log(page);
+          setListingsPage(page);
+        },
       }}
       renderItem={(listing) => (
         <List.Item>
