@@ -2,6 +2,7 @@ import React from "react";
 import { Avatar, Divider, Icon, Tag, Typography } from "antd";
 import { Listing } from "../../../../lib/graphql/queries/Listing/__generated__/Listing";
 import { iconColor } from "../../../../lib/utils";
+import { Link } from "react-router-dom";
 
 interface Props {
   listing: Listing["listing"];
@@ -43,10 +44,12 @@ export const ListingDetails = ({ listing }: Props) => {
       </div>
       <Divider />
       <div className="liting-details__section">
-        <Avatar src={host.avatar} size={64} />
-        <Title level={2} className="listing-details__host-name">
-          {host.name}
-        </Title>
+        <Link to={`/user/${host.id}`}>
+          <Avatar src={host.avatar} size={64} />
+          <Title level={2} className="listing-details__host-name">
+            {host.name}
+          </Title>
+        </Link>
       </div>
       <Divider />
       <div className="listing-details__section">

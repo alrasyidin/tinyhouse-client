@@ -300,3 +300,93 @@ html {
 .listing {
   padding: 60px 120px;
 }
+
+.listing-bookings h3.ant-typography,
+.listing-bookings h4.ant-typography {
+  color: #1d226c;
+}
+.listing-bookings__section {
+  font-size: 15px;
+  padding: 5px 0;
+}
+.listing-bookings__item {
+  margin: 20px 0;
+}
+.listing-bookings__history {
+  margin-bottom: 20px;
+}
+.listing-bookings__history > div {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.listing-bookings__stars {
+  font-size: 13px;
+}
+.listing-booking {
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+}
+@media (max-width: 62em) {
+  .listing-booking {
+    padding-top: 40px;
+  }
+}
+.listing-booking__card-title.ant-typography {
+  color: #1d226c;
+  margin-bottom: 5px;
+}
+.listing-booking__card-title.ant-typography span {
+  color: #bfbfbf;
+  font-weight: 400;
+}
+.listing-booking__card {
+  width: 100%;
+  text-align: center;
+}
+.listing-booking__card-date-picker {
+  padding-bottom: 20px;
+}
+.listing-booking__card-cta {
+  display: block;
+  margin: 0 auto 10px;
+}
+.ant-calendar-date__check-in {
+  border: 1px solid #1890ff;
+  border-radius: 50%;
+}
+.ant-calendar-footer-text {
+  font-size: 11px;
+  line-height: 20px;
+  padding: 10px;
+  display: block;
+}
+.listing-booking-modal {
+  text-align: center;
+  padding-top: 10px;
+}
+.listing-booking-modal__intro-title.ant-typography,
+.listing-booking-modal__intro-title.ant-typography + h3.ant-typography {
+  margin-top: 5px;
+}
+.listing-booking-modal__charge-summary-total {
+  font-weight: 700;
+  font-size: 15px;
+}
+.listing-booking-modal__charge-summary-stripe {
+  display: block;
+  font-size: 11px;
+  padding-top: 5px;
+}
+.listing-booking-modal__stripe-card-section {
+  padding-bottom: 10px;
+}
+.listing-booking-modal__stripe-card {
+  padding: 10px;
+  margin: 40px 0;
+  border: 1px solid #f0f1f2;
+  box-shadow: 0 2px 4px rgba(29, 34, 108, 0.1);
+}
+.listing-booking-modal__cta {
+  width: 100px;
+}
