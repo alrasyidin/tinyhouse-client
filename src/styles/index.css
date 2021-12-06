@@ -51,6 +51,54 @@ html {
   float: right;
 }
 
+.app-header__search-input {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  padding-right: 10px;
+}
+.app-header__search-input .ant-input-group {
+  border: 0;
+  width: 100%;
+  max-width: 460px;
+}
+.app-header__search-input .ant-input-group input {
+  border: 1px solid #f0f1f2;
+  box-shadow: 0 2px 4px rgba(29, 34, 108, 0.1);
+}
+.app-header-skeleton {
+  display: flex;
+  background: #fff;
+  box-shadow: 0 2px 8px #f0f1f2;
+  padding: 0;
+}
+.app-header-skeleton__search-section {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+.app-header-skeleton__logo {
+  padding: 0 20px;
+}
+.app-header-skeleton__logo img {
+  width: 55px;
+}
+.app-header-skeleton__search-input {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  padding-right: 10px;
+}
+.app-header-skeleton__search-input .ant-input-group {
+  border: 0;
+  width: 100%;
+  max-width: 460px;
+}
+.app-header-skeleton__search-input .ant-input-group input {
+  border: 1px solid #f0f1f2;
+  box-shadow: 0 2px 4px rgba(29, 34, 108, 0.1);
+}
+
 .app-skeleton {
   height: 100%;
   display: flex;

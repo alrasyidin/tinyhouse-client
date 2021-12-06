@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useQuery } from "react-apollo";
 import {
   Listings as ListingsData,
@@ -21,15 +21,18 @@ const { Title, Paragraph, Text } = Typography;
 interface MatchParams {
   location: string;
 }
-const PAGE_LIMIT = 8;
+const PAGE_LIMIT = 4;
 
 export const Listings = ({ match }: RouteComponentProps<MatchParams>) => {
   const [filter, setFilter] = useState(ListingsFilterEnum.PRICE_LOW_TO_HIGH);
   const [page, setPage] = useState(1);
 
+  const locationRef = useRef(match.params.location);
+
   const { data, loading, error } = useQuery<ListingsData, ListingsVariables>(
     LISTINGS,
     {
+      skip: locationRef.current !== match.params.location && page !== 1,
       variables: {
         location: match.params.location,
         limit: PAGE_LIMIT,
@@ -38,6 +41,11 @@ export const Listings = ({ match }: RouteComponentProps<MatchParams>) => {
       },
     }
   );
+
+  useEffect(() => {
+    setPage(1);
+    locationRef.current = match.params.location;
+  }, [match.params.location]);
 
   const listings = data ? data.listings : null;
   const listingsRegion = listings ? listings.region : null;
