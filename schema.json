@@ -102,6 +102,18 @@
             "description": "",
             "args": [
               {
+                "name": "location",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
                 "name": "filter",
                 "description": null,
                 "type": {
@@ -865,6 +877,22 @@
         "description": "",
         "specifiedByUrl": null,
         "fields": [
+          {
+            "name": "region",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "total",
             "description": "",
