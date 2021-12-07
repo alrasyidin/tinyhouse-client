@@ -2,6 +2,8 @@ import React from "react";
 import { Typography, Divider, Avatar, Card, Button } from "antd";
 import { User as UserData } from "../../../../lib/graphql/queries/User/__generated__/User";
 
+const stripeAuthUrl = `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_S_CLIENT_ID}&scope=read_write`;
+
 const { Text, Title, Paragraph } = Typography;
 
 interface Props {
@@ -10,6 +12,10 @@ interface Props {
 }
 
 export const UserProfile = ({ user, viewerIsUser }: Props) => {
+  const handleRedirectStripe = () => {
+    window.location.href = stripeAuthUrl;
+  };
+
   const additionalDetailsSection = viewerIsUser ? (
     <>
       <Divider></Divider>
@@ -19,7 +25,11 @@ export const UserProfile = ({ user, viewerIsUser }: Props) => {
         <Paragraph>
           Interested to be TinyHouse host? Register with your stripe account.
         </Paragraph>
-        <Button type="primary" className="user-profile__details-cta">
+        <Button
+          type="primary"
+          className="user-profile__details-cta"
+          onClick={handleRedirectStripe}
+        >
           Connect Stripe Account
         </Button>
         <Paragraph>

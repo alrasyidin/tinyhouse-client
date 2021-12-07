@@ -69,6 +69,15 @@ export const User = ({
     />
   ) : null;
 
+  const stripeError = new URLSearchParams(window.location.search).get(
+    "stripe_error"
+  );
+  const stripeErrorElement = stripeError ? (
+    <Content className="user">
+      <ErrorBanner message="This user's may be not exists or we've encounter an error. Please try again later" />
+    </Content>
+  ) : null;
+
   if (loading) {
     return (
       <Content className="user">
@@ -87,6 +96,7 @@ export const User = ({
 
   return (
     <Content className="user">
+      {stripeErrorElement}
       <Row gutter={12} type="flex" justify="space-between">
         <Col xs={24}>{userProfileComponent}</Col>
         <Col xs={24}>

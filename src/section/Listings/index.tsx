@@ -21,7 +21,7 @@ const { Title, Paragraph, Text } = Typography;
 interface MatchParams {
   location: string;
 }
-const PAGE_LIMIT = 4;
+const PAGE_LIMIT = 8;
 
 export const Listings = ({ match }: RouteComponentProps<MatchParams>) => {
   const [filter, setFilter] = useState(ListingsFilterEnum.PRICE_LOW_TO_HIGH);
