@@ -24,10 +24,11 @@ const { Content } = Layout;
 const { Text, Title } = Typography;
 
 interface Props {
+  viewer: Viewer;
   setViewer: (viewer: Viewer) => void;
 }
 
-export const Login = ({ setViewer }: Props) => {
+export const Login = ({ viewer, setViewer }: Props) => {
   const [handleAuthorize, { error: codeError }] = useLazyQuery<AuthUrlData>(
     AUTH_URL,
     {
@@ -56,7 +57,6 @@ export const Login = ({ setViewer }: Props) => {
     const code = new URLSearchParams(window.location.search).get("code");
 
     if (code) {
-      console.log(code);
       logInRef.current({
         variables: {
           input: { code },
@@ -86,6 +86,10 @@ export const Login = ({ setViewer }: Props) => {
   if (LogInData && LogInData.logIn) {
     const { id: viewerId } = LogInData.logIn;
     return <Redirect to={`/user/${viewerId}`} />;
+  }
+
+  if (viewer.id) {
+    return <Redirect to={`/user/${viewer.id}`} />;
   }
 
   return (
