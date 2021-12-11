@@ -9,7 +9,7 @@ export const ListingsSkeleton = () => {
       <Skeleton paragraph={{ rows: 1 }} />
 
       <List
-        grid={{ gutter: 10, xs: 1, sm: 2, lg: 4 }}
+        grid={{ gutter: 10, xs: 1, sm: 2, md: 2, lg: 4, xl: 4 }}
         dataSource={emptyData}
         renderItem={() => (
           <List.Item>

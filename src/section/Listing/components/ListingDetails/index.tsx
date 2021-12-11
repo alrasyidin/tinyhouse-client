@@ -26,7 +26,7 @@ export const ListingDetails = ({ listing }: Props) => {
           ellipsis
           className="listing-details__city-address"
         >
-          <EnvironmentOutlined style={{ color: iconColor }} />
+          <EnvironmentOutlined style={{ color: iconColor }} /> {city}
           <Divider type="vertical" />
           {address}
         </Paragraph>

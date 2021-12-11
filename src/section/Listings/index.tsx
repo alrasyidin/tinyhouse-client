@@ -66,7 +66,7 @@ export const Listings = ({ match }: RouteComponentProps<MatchParams>) => {
         </Affix>
         <List
           className="listings__list"
-          grid={{ gutter: 8, xs: 1, sm: 2, lg: 4 }}
+          grid={{ gutter: 8, xs: 1, sm: 2, md: 2, lg: 4, xl: 4 }}
           dataSource={listings.result}
           renderItem={(listing) => (
             <List.Item>

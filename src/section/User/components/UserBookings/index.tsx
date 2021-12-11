@@ -23,7 +23,7 @@ export const UserBookings = ({
 
   const userBookingsList = userBookings ? (
     <List
-      grid={{ gutter: 16, xs: 1, sm: 2, lg: 4 }}
+      grid={{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 4, xl: 4 }}
       dataSource={result ? result : undefined}
       locale={{ emptyText: "You haven't made any bookings" }}
       pagination={{
