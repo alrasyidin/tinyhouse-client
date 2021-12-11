@@ -18,7 +18,17 @@ export enum ListingsFilter {
 }
 
 export interface ConnectStripeInput {
-  code?: string | null;
+  code: string;
+}
+
+export interface HostListingInput {
+  title: string;
+  description: string;
+  type: ListingType;
+  image: string;
+  address: string;
+  price: number;
+  numOfGuests: number;
 }
 
 export interface LogInInput {
