@@ -113,7 +113,7 @@ export const User = ({
   return (
     <Content className="user">
       {stripeErrorElement}
-      <Row gutter={12} type="flex" justify="space-between">
+      <Row gutter={12} justify="space-between">
         <Col xs={24}>{userProfileComponent}</Col>
         <Col xs={24}>
           {userListingsComponent}

@@ -1,8 +1,9 @@
 import React from "react";
-import { Avatar, Divider, Icon, Tag, Typography } from "antd";
+import { Avatar, Divider, Tag, Typography } from "antd";
 import { Listing } from "../../../../lib/graphql/queries/Listing/__generated__/Listing";
 import { iconColor } from "../../../../lib/utils";
 import { Link } from "react-router-dom";
+import { EnvironmentOutlined } from "@ant-design/icons";
 
 interface Props {
   listing: Listing["listing"];
@@ -25,7 +26,7 @@ export const ListingDetails = ({ listing }: Props) => {
           ellipsis
           className="listing-details__city-address"
         >
-          <Icon type="environment" style={{ color: iconColor }} /> {city}
+          <EnvironmentOutlined style={{ color: iconColor }} />
           <Divider type="vertical" />
           {address}
         </Paragraph>

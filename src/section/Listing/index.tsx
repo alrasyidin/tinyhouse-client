@@ -85,7 +85,7 @@ export const Listing = ({ match }: RouteComponentProps<MatchParams>) => {
 
   return (
     <Content className="listing">
-      <Row type="flex" gutter={24} justify="space-between">
+      <Row gutter={24} justify="space-between">
         <Col xs={24} lg={14}>
           {listingDetailsElement}
           {listingBookingsElement}
