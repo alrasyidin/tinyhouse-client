@@ -611,3 +611,38 @@ html {
   align-items: center;
   justify-content: center;
 }
+
+.host-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 80px;
+  margin: 0 auto;
+  max-width: 900px;
+}
+.host__form {
+  width: 650px;
+  margin: 0 auto;
+}
+@media (max-width: 62em) {
+  .host-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .host__form {
+    width: 400px;
+  }
+}
+.host__form-header {
+  padding-bottom: 20px;
+}
+
+.host__form-title.ant-typography {
+  color: #1d226c;
+  margin-bottom: 5px;
+}
+
+.host__form-image-upload img {
+  width: 125px;
+}
