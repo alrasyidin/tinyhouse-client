@@ -28,6 +28,8 @@ import {
 import "./styles/index.css";
 import { AppHeaderSkeleton, ErrorBanner } from "./lib/components";
 import { Stripe } from "./section/Stripe";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
 
 const client = new ApolloClient({
   uri: "/api",
@@ -40,6 +42,16 @@ const client = new ApolloClient({
     });
   },
 });
+
+const stripePromise = loadStripe(
+  process.env.REACT_APP_S_PUBLISHABLE_KEY as string
+);
+
+const optionsStripe: StripeElementsOptions = {
+  appearance: {
+    theme: "stripe",
+  },
+};
 
 const initialViewer: Viewer = {
   id: null,
@@ -104,7 +116,11 @@ const App = () => {
           <Route
             exact
             path="/listing/:id"
-            render={(props) => <Listing {...props} viewer={viewer} />}
+            render={(props) => (
+              <Elements stripe={stripePromise} options={optionsStripe}>
+                <Listing {...props} viewer={viewer} />{" "}
+              </Elements>
+            )}
           />
           <Route
             exact

@@ -2,6 +2,8 @@ lockfileVersion: 5.3
 
 specifiers:
   '@ant-design/icons': ^4.7.0
+  '@stripe/react-stripe-js': ^1.7.0
+  '@stripe/stripe-js': ^1.22.0
   '@testing-library/jest-dom': ^5.15.1
   '@testing-library/react': ^11.2.7
   '@testing-library/user-event': ^12.8.3
@@ -24,6 +26,8 @@ specifiers:
 
 dependencies:
   '@ant-design/icons': 4.7.0_react-dom@17.0.2+react@17.0.2
+  '@stripe/react-stripe-js': 1.7.0_d6bc5921380077b4678dd37cad633149
+  '@stripe/stripe-js': 1.22.0
   '@testing-library/jest-dom': 5.15.1
   '@testing-library/react': 11.2.7_react-dom@17.0.2+react@17.0.2
   '@testing-library/user-event': 12.8.3
@@ -2096,6 +2100,23 @@ packages:
     resolution: {integrity: sha512-MZPUxrmFubI36XS1DI3qmI0YdN1gks62JtFZvxR67ljjSNCeK6U08Zx4msEWOXuofgqUt6zPHSi1H9fbjR/NRA==}
     dependencies:
       '@sinonjs/commons': 1.8.3
+    dev: false
+
+  /@stripe/react-stripe-js/1.7.0_d6bc5921380077b4678dd37cad633149:
+    resolution: {integrity: sha512-L20v8Jq0TDZFL2+y+uXD751t6q9SalSFkSYZpmZ2VWrGZGK7HAGfRQ804dzYSSr5fGenW6iz6y7U0YKfC/TK3g==}
+    peerDependencies:
+      '@stripe/stripe-js': ^1.20.3
+      react: ^16.8.0 || ^17.0.0
+      react-dom: ^16.8.0 || ^17.0.0
+    dependencies:
+      '@stripe/stripe-js': 1.22.0
+      prop-types: 15.7.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+  /@stripe/stripe-js/1.22.0:
+    resolution: {integrity: sha512-fm8TR8r4LwbXgBIYdPmeMjJJkxxFC66tvoliNnmXOpUgZSgQKoNPW3ON0ZphZIiif1oqWNhAaSrr7tOvGu+AFg==}
     dev: false
 
   /@surma/rollup-plugin-off-main-thread/1.4.2:

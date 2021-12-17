@@ -1,4 +1,16 @@
 import React from "react";
+import {
+  CardElement,
+  Elements,
+  PaymentElement,
+  useElements,
+  useStripe,
+} from "@stripe/react-stripe-js";
+import {
+  loadStripe,
+  StripeCardElement,
+  StripeElementsOptions,
+} from "@stripe/stripe-js";
 import { Typography, Modal, Divider, Button } from "antd";
 import { KeyOutlined } from "@ant-design/icons";
 import moment, { Moment } from "moment";
@@ -20,6 +32,21 @@ export const ListingCreateBookingModal = ({
   modalVisible,
   setModalVisible,
 }: Props) => {
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const handleCheckout = async () => {
+    if (!elements || !stripe) {
+      return;
+    }
+
+    let { token: stripeToken } = await stripe.createToken(
+      elements.getElement(CardElement) as StripeCardElement
+    );
+
+    console.log(stripeToken);
+  };
+
   const daysBooked = moment(checkOutDate).diff(checkInDate, "days") + 1;
   const priceBooking = price * daysBooked;
   // const tinyHouseFee = 0.05 * priceBooking;
@@ -75,10 +102,13 @@ export const ListingCreateBookingModal = ({
         <Divider />
 
         <div className="listing-booking-modal__stripe-card-section">
+          <CardElement className="listing-booking-modal__stripe-card" />
           <Button
             type="primary"
             size="large"
             className="listing-booking-modal__cta"
+            onClick={handleCheckout}
+            disabled={!stripe || !elements}
           >
             Book
           </Button>
