@@ -18,7 +18,7 @@ export const HomeListings = ({ title, listings }: Props) => {
       </Title>
 
       <List
-        grid={{ gutter: 10, xs: 1, sm: 2, lg: 4 }}
+        grid={{ gutter: 10, xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}
         dataSource={listings}
         renderItem={(listing) => (
           <List.Item>
