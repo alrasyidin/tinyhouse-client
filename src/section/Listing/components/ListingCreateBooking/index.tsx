@@ -15,6 +15,7 @@ interface Props {
   checkOutDate: Moment | null;
   setCheckInDate: (checkInDate: Moment | null) => void;
   setCheckOutDate: (checkOutDate: Moment | null) => void;
+  setModalVisible: (modalVisible: boolean) => void;
 }
 
 const { Text, Title, Paragraph } = Typography;
@@ -28,6 +29,7 @@ export const ListingCreateBookings = ({
   checkOutDate,
   setCheckInDate,
   setCheckOutDate,
+  setModalVisible,
 }: Props) => {
   const bookingsIndexJSON: BookingsIndex = JSON.parse(bookingsIndex);
 
@@ -158,6 +160,7 @@ export const ListingCreateBookings = ({
           disabled={buttonDisabled}
           type="primary"
           className="listing-booking__card-cta"
+          onClick={() => setModalVisible(true)}
         >
           Request to book!
         </Button>
