@@ -1,16 +1,6 @@
 import React from "react";
-import {
-  CardElement,
-  Elements,
-  PaymentElement,
-  useElements,
-  useStripe,
-} from "@stripe/react-stripe-js";
-import {
-  loadStripe,
-  StripeCardElement,
-  StripeElementsOptions,
-} from "@stripe/stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { StripeCardElement } from "@stripe/stripe-js";
 import { Typography, Modal, Divider, Button } from "antd";
 import { KeyOutlined } from "@ant-design/icons";
 import moment, { Moment } from "moment";

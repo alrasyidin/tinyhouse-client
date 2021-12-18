@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { min, Moment } from "moment";
+import { Moment } from "moment";
 import { RouteComponentProps } from "react-router";
 import { useQuery } from "react-apollo";
 
