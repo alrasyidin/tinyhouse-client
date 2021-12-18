@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import { useQuery } from "react-apollo";
 import {
   Listings as ListingsData,
@@ -14,6 +15,7 @@ import {
   ListingsPagination,
   ListingsSkeleton,
 } from "./components";
+import { useScrollToTop } from "../../lib/hooks";
 
 const { Content } = Layout;
 const { Title, Paragraph, Text } = Typography;
@@ -41,6 +43,8 @@ export const Listings = ({ match }: RouteComponentProps<MatchParams>) => {
       },
     }
   );
+
+  useScrollToTop();
 
   useEffect(() => {
     setPage(1);

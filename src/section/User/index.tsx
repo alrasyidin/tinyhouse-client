@@ -11,6 +11,7 @@ import { UserBookings, UserListings, UserProfile } from "./components";
 import { Viewer } from "../../lib/types";
 import { PageSkeleton } from "../../lib/components";
 import { ErrorBanner } from "../../lib/components";
+import { useScrollToTop } from "../../lib/hooks";
 
 const { Content } = Layout;
 
@@ -32,6 +33,8 @@ export const User = ({
 }: Props & RouteComponentProps<MatchParams>) => {
   const [listingsPage, setListingsPage] = useState(1);
   const [bookingsPage, setBookingsPage] = useState(1);
+
+  useScrollToTop();
 
   const { data, loading, error, refetch } = useQuery<UserData, UserVariables>(
     USER,

@@ -32,6 +32,7 @@ import {
   HostListingVariables,
 } from "../../lib/graphql/mutations/HostListing/__generated__/HostLIsting";
 import { HOST_LISTING } from "../../lib/graphql/mutations";
+import { useScrollToTop } from "../../lib/hooks";
 
 const { Content } = Layout;
 const { Text, Title } = Typography;
@@ -42,6 +43,12 @@ interface Props {
 }
 
 export const Host = ({ viewer }: Props) => {
+  const [imageLoading, setImageLoading] = useState(false);
+  const [imageBase64Value, setImageBase64Value] = useState<string | null>(null);
+  const [form] = Form.useForm();
+
+  useScrollToTop();
+
   const [hostListing, { loading, data }] = useMutation<
     HostListingData,
     HostListingVariables
@@ -55,11 +62,6 @@ export const Host = ({ viewer }: Props) => {
       );
     },
   });
-
-  const [imageLoading, setImageLoading] = useState(false);
-  const [imageBase64Value, setImageBase64Value] = useState<string | null>(null);
-  const [form] = Form.useForm();
-
   const handleChangeImageUpload = (info: UploadChangeParam) => {
     const { file } = info;
 

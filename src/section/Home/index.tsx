@@ -16,6 +16,7 @@ import { LISTINGS } from "../../lib/graphql/queries";
 import { ListingsFilter } from "../../lib/graphql/globalTypes";
 import { HomeListings } from "./components";
 import { HomeListingsSkeleton } from "./components/HomeListingsSkeleton";
+import { useScrollToTop } from "../../lib/hooks";
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -24,6 +25,8 @@ const PAGE_LIMIT = 4;
 const PAGE_NUMBER = 1;
 
 export const Home = ({ history }: RouteComponentProps) => {
+  useScrollToTop();
+
   const { data, loading } = useQuery<ListingsData, ListingsVariables>(
     LISTINGS,
     {

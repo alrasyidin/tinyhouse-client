@@ -19,6 +19,7 @@ import {
 } from "../../lib/utils";
 import { LOG_IN } from "../../lib/graphql/mutations";
 import { AUTH_URL } from "../../lib/graphql/queries";
+import { useScrollToTop } from "../../lib/hooks";
 
 const { Content } = Layout;
 const { Text, Title } = Typography;
@@ -29,6 +30,8 @@ interface Props {
 }
 
 export const Login = ({ viewer, setViewer }: Props) => {
+  useScrollToTop();
+
   const [handleAuthorize, { error: codeError }] = useLazyQuery<AuthUrlData>(
     AUTH_URL,
     {
