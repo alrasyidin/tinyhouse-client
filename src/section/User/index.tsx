@@ -42,6 +42,7 @@ export const User = ({
         bookingsPage,
         limit: PAGE_LIMIT,
       },
+      fetchPolicy: "cache-and-network",
     }
   );
 
