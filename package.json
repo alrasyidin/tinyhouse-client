@@ -1,5 +1,6 @@
 {
-  "name": "tinyhouse_client",
+  "name": "tinyhouse-client",
+  "description": "Tinyhouse Client Application build using React and Friends.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
