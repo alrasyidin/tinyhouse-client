@@ -402,6 +402,9 @@ html {
 .ant-calendar-date__check-in {
   border: 1px solid #1890ff;
   border-radius: 50%;
+  margin: 0 4px;
+  /* color: #fff;
+  background-color: #1890ff; */
 }
 .ant-calendar-footer-text {
   font-size: 11px;

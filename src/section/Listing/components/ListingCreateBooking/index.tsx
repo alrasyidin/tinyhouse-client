@@ -1,5 +1,13 @@
 import React from "react";
-import { Card, Typography, Divider, Button, DatePicker } from "antd";
+import {
+  Card,
+  Typography,
+  Divider,
+  Button,
+  DatePicker,
+  Tooltip,
+  Badge,
+} from "antd";
 import { displayErrorMessage, formatListingPrice } from "../../../../lib/utils";
 import moment, { Moment } from "moment";
 import { Viewer } from "../../../../lib/types";
@@ -33,7 +41,7 @@ export const ListingCreateBookings = ({
 }: Props) => {
   const bookingsIndexJSON: BookingsIndex = JSON.parse(bookingsIndex);
 
-  const dateIsBooked = (date: Moment) => {
+  const isDateBooked = (date: Moment) => {
     const y = moment(date).year();
     const m = moment(date).month();
     const d = moment(date).date();
@@ -47,34 +55,28 @@ export const ListingCreateBookings = ({
 
   const disabledDate = (date: Moment | null) => {
     if (date) {
-      const checkDateBeforeEndOfDay = date.isBefore(moment().endOf("days"));
-      const checkDateAfterSixMonth = date.isAfter(
-        moment().add(6, "M").startOf("month")
+      const isDateBeforeEndOfDay = date.isBefore(moment().endOf("days"));
+
+      const isDateMoreThanOneMonthAhead = moment(date).isAfter(
+        moment().endOf("day").add(30, "days")
       );
 
       return (
-        checkDateBeforeEndOfDay || checkDateAfterSixMonth || dateIsBooked(date)
+        isDateBeforeEndOfDay ||
+        isDateMoreThanOneMonthAhead ||
+        isDateBooked(date)
       );
-    } else {
-      return false;
-    }
-  };
-
-  const disabledDateCheckout = (date: Moment | null) => {
-    if (checkInDate && date) {
-      const checkOutDateDisableOneMonthLater = date.isAfter(
-        moment(checkInDate).add(1, "M").endOf("month")
-      );
-
-      return checkOutDateDisableOneMonthLater || disabledDate(date);
     } else {
       return false;
     }
   };
 
   const verifyAndSetCheckOutDate = (checkOutDate: Moment | null) => {
-    if (checkInDate && checkOutDate) {
+    console.log(checkOutDate?.format("YYYY-MM-DD"));
+    if (checkInDate) {
       if (moment(checkOutDate).isBefore(checkInDate, "days")) {
+        setCheckOutDate(null);
+
         return displayErrorMessage(
           "Yoy can't pick date of check out prior to check in!"
         );
@@ -100,7 +102,6 @@ export const ListingCreateBookings = ({
         }
       }
     }
-
     setCheckOutDate(checkOutDate);
   };
 
@@ -131,7 +132,7 @@ export const ListingCreateBookings = ({
           </Paragraph>
           <Divider />
           <div className="listing-booking__card-date-picker">
-            <Paragraph strong>Check IN</Paragraph>
+            <Paragraph strong>Check In</Paragraph>
             <DatePicker
               value={checkInDate ? checkInDate : undefined}
               format={"DD/MM/YYYY"}
@@ -140,19 +141,60 @@ export const ListingCreateBookings = ({
               showToday={false}
               onChange={(dateValue) => setCheckInDate(dateValue)}
               onOpenChange={() => setCheckOutDate(null)}
+              renderExtraFooter={() => (
+                <div>
+                  <Text type="secondary" className="ant-calendar-footer-text">
+                    You can only book listing within 30 days from today
+                  </Text>
+                </div>
+              )}
             />
           </div>
           <div className="listing-booking__card-date-picker">
-            <Paragraph strong>Check OUT</Paragraph>
+            <Paragraph strong>Check Out</Paragraph>
             <DatePicker
-              value={checkOutDate ? checkOutDate : undefined}
+              value={checkOutDate ? checkOutDate : null}
               format={"DD/MM/YYYY"}
-              disabledDate={disabledDateCheckout}
               disabled={checkOutInputDisabled}
+              disabledDate={disabledDate}
               showToday={false}
               onChange={(dateValue) => verifyAndSetCheckOutDate(dateValue)}
+              dateRender={(current) => {
+                if (
+                  moment(current).isSame(
+                    checkInDate ? checkInDate : null,
+                    "day"
+                  )
+                ) {
+                  return (
+                    <Tooltip title="Check in date">
+                      <div className="ant-calendar-date ant-calendar-date__check-in">
+                        {current.date()}
+                      </div>
+                    </Tooltip>
+                  );
+                } else {
+                  return (
+                    <div className="ant-calendar-date ant-picker-cell-inner">
+                      {current.date()}
+                    </div>
+                  );
+                }
+              }}
+              renderExtraFooter={() => (
+                <div>
+                  <Text type="secondary" className="ant-calendar-footer-text">
+                    You can only book listing within 30 days from today
+                  </Text>
+                </div>
+              )}
             />
           </div>
+          {/* <Tooltip title="Check in date">
+            <div className="ant-calendar-date ant-calendar-date__check-in">
+              {moment().format("YYYY-MM-DD")}
+            </div>
+          </Tooltip> */}
         </div>
         <Divider />
         <Button
