@@ -31,6 +31,7 @@ import { Stripe } from "./section/Stripe";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
 
+// client
 const client = new ApolloClient({
   credentials: "include",
   uri:
