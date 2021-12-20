@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Card,
-  Typography,
-  Divider,
-  Button,
-  DatePicker,
-  Tooltip,
-  Badge,
-} from "antd";
+import { Card, Typography, Divider, Button, DatePicker, Tooltip } from "antd";
 import { displayErrorMessage, formatListingPrice } from "../../../../lib/utils";
 import moment, { Moment } from "moment";
 import { Viewer } from "../../../../lib/types";

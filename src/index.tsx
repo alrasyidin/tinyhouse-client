@@ -32,7 +32,10 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
 
 const client = new ApolloClient({
-  uri: "/api",
+  uri:
+    `${process.env.NODE_ENV}` === "development"
+      ? "/api"
+      : `${process.env.REACT_APP_SERVER_URL}`,
   request: async (operation) => {
     const token = sessionStorage.getItem("token");
     operation.setContext({
