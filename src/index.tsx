@@ -32,6 +32,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
 
 const client = new ApolloClient({
+  credentials: "include",
   uri:
     `${process.env.NODE_ENV}` === "development"
       ? "/api"
