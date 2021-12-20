@@ -61,8 +61,11 @@ export const Stripe = ({ viewer, setViewer }: Props) => {
     );
   }
 
-  if (error) {
+  if (error && viewer) {
     return <Redirect to={`/user/${viewer.id}?stripe_error=true`} />;
+  } else {
+    console.log(viewer);
+    console.log(error);
   }
 
   return null;
