@@ -2,12 +2,12 @@ lockfileVersion: 5.3
 
 specifiers:
   '@ant-design/icons': ^4.7.0
+  '@apollo/react-testing': ^4.0.0
   '@stripe/react-stripe-js': ^1.7.0
   '@stripe/stripe-js': ^1.22.0
   '@testing-library/jest-dom': ^5.15.1
   '@testing-library/react': ^11.2.7
   '@testing-library/user-event': ^12.8.3
-  '@types/jest': ^26.0.24
   '@types/node': ^12.20.37
   '@types/react': ^17.0.37
   '@types/react-dom': ^17.0.11
@@ -26,12 +26,12 @@ specifiers:
 
 dependencies:
   '@ant-design/icons': 4.7.0_react-dom@17.0.2+react@17.0.2
+  '@apollo/react-testing': 4.0.0_graphql@16.0.1+react@17.0.2
   '@stripe/react-stripe-js': 1.7.0_d6bc5921380077b4678dd37cad633149
   '@stripe/stripe-js': 1.22.0
   '@testing-library/jest-dom': 5.15.1
   '@testing-library/react': 11.2.7_react-dom@17.0.2+react@17.0.2
   '@testing-library/user-event': 12.8.3
-  '@types/jest': 26.0.24
   '@types/node': 12.20.37
   '@types/react': 17.0.37
   '@types/react-dom': 17.0.11
@@ -87,6 +87,34 @@ packages:
       lodash: 4.17.21
       react: 17.0.2
       resize-observer-polyfill: 1.5.1
+    dev: false
+
+  /@apollo/client/3.5.6_graphql@16.0.1+react@17.0.2:
+    resolution: {integrity: sha512-XHoouuEJ4L37mtfftcHHO1caCRrKKAofAwqRoq28UQIPMJk+e7n3X9OtRRNXKk/9tmhNkwelSary+EilfPwI7A==}
+    peerDependencies:
+      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+      react: ^16.8.0 || ^17.0.0
+      subscriptions-transport-ws: ^0.9.0 || ^0.11.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      subscriptions-transport-ws:
+        optional: true
+    dependencies:
+      '@graphql-typed-document-node/core': 3.1.1_graphql@16.0.1
+      '@wry/context': 0.6.1
+      '@wry/equality': 0.5.2
+      '@wry/trie': 0.3.1
+      graphql: 16.0.1
+      graphql-tag: 2.12.6_graphql@16.0.1
+      hoist-non-react-statics: 3.3.2
+      optimism: 0.16.1
+      prop-types: 15.7.2
+      react: 17.0.2
+      symbol-observable: 4.0.0
+      ts-invariant: 0.9.4
+      tslib: 2.3.1
+      zen-observable-ts: 1.2.3
     dev: false
 
   /@apollo/react-common/3.1.4_81a735bc87d79ecc68e8cf2b7a455805:
@@ -189,6 +217,16 @@ packages:
       - apollo-client
       - apollo-utilities
       - graphql
+    dev: false
+
+  /@apollo/react-testing/4.0.0_graphql@16.0.1+react@17.0.2:
+    resolution: {integrity: sha512-P7Z/flUHpRRZYc3FkIqxZH9XD3FuP2Sgks1IXqGq2Zb7qI0aaTfVeRsLYmZNUcFOh2pTHxs0NXgPnH1VfYOpig==}
+    dependencies:
+      '@apollo/client': 3.5.6_graphql@16.0.1+react@17.0.2
+    transitivePeerDependencies:
+      - graphql
+      - react
+      - subscriptions-transport-ws
     dev: false
 
   /@babel/code-frame/7.10.4:
@@ -1731,6 +1769,14 @@ packages:
     resolution: {integrity: sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==}
     dev: false
 
+  /@graphql-typed-document-node/core/3.1.1_graphql@16.0.1:
+    resolution: {integrity: sha512-NQ17ii0rK1b34VZonlmT2QMJFI70m0TRwbknO/ihlbatXyaktDhN/98vBiUU6kNBPljqGqyIrl2T4nY2RpFANg==}
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      graphql: 16.0.1
+    dev: false
+
   /@hapi/address/2.1.4:
     resolution: {integrity: sha512-QD1PhQk+s31P1ixsX0H0Suoupp3VMXzIVMSwobR3F3MSUO2YCV0B7xqLcUw/Bh8yuvd3LhpyqLQWTNcRmp6IdQ==}
     deprecated: Moved to 'npm install @sideway/address'
@@ -2806,10 +2852,31 @@ packages:
       tslib: 1.14.1
     dev: false
 
+  /@wry/context/0.6.1:
+    resolution: {integrity: sha512-LOmVnY1iTU2D8tv4Xf6MVMZZ+juIJ87Kt/plMijjN20NMAXGmH4u8bS1t0uT74cZ5gwpocYueV58YwyI8y+GKw==}
+    engines: {node: '>=8'}
+    dependencies:
+      tslib: 2.3.1
+    dev: false
+
   /@wry/equality/0.1.11:
     resolution: {integrity: sha512-mwEVBDUVODlsQQ5dfuLUS5/Tf7jqUKyhKYHmVi4fPB6bDMOfWvUPJmKgS1Z7Za/sOI3vzWt4+O7yCiL/70MogA==}
     dependencies:
       tslib: 1.14.1
+    dev: false
+
+  /@wry/equality/0.5.2:
+    resolution: {integrity: sha512-oVMxbUXL48EV/C0/M7gLVsoK6qRHPS85x8zECofEZOVvxGmIPLA9o5Z27cc2PoAyZz1S2VoM2A7FLAnpfGlneA==}
+    engines: {node: '>=8'}
+    dependencies:
+      tslib: 2.3.1
+    dev: false
+
+  /@wry/trie/0.3.1:
+    resolution: {integrity: sha512-WwB53ikYudh9pIorgxrkHKrQZcCqNM/Q/bDzZBffEaGUKGuHrRb3zZUT9Sh2qw9yogC7SsdRmQ1ER0pqvd3bfw==}
+    engines: {node: '>=8'}
+    dependencies:
+      tslib: 2.3.1
     dev: false
 
   /@xtuc/ieee754/1.2.0:
@@ -8662,6 +8729,13 @@ packages:
       '@wry/context': 0.4.4
     dev: false
 
+  /optimism/0.16.1:
+    resolution: {integrity: sha512-64i+Uw3otrndfq5kaoGNoY7pvOhSsjFEN4bdEFh80MWVk/dbgJfMv7VFDeCT8LxNAlEVhQmdVEbfE7X2nWNIIg==}
+    dependencies:
+      '@wry/context': 0.6.1
+      '@wry/trie': 0.3.1
+    dev: false
+
   /optimize-css-assets-webpack-plugin/5.0.4_webpack@4.44.2:
     resolution: {integrity: sha512-wqd6FdI2a5/FdoiCNNkEvLeA//lHHfG24Ln2Xm2qqdIk4aOlsR18jwpyOihqQ8849W3qu2DX8fOYxpvTMj+93A==}
     peerDependencies:
@@ -11799,6 +11873,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
+  /symbol-observable/4.0.0:
+    resolution: {integrity: sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ==}
+    engines: {node: '>=0.10'}
+    dev: false
+
   /symbol-tree/3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
     dev: false
@@ -12041,6 +12120,13 @@ packages:
     resolution: {integrity: sha512-uEtWkFM/sdZvRNNDL3Ehu4WVpwaulhwQszV8mrtcdeE8nN00BV9mAmQ88RkrBhFgl9gMgvjJLAQcZbnPXI9mlA==}
     dependencies:
       tslib: 1.14.1
+    dev: false
+
+  /ts-invariant/0.9.4:
+    resolution: {integrity: sha512-63jtX/ZSwnUNi/WhXjnK8kz4cHHpYS60AnmA6ixz17l7E12a5puCWFlNpkne5Rl0J8TBPVHpGjsj4fxs8ObVLQ==}
+    engines: {node: '>=8'}
+    dependencies:
+      tslib: 2.3.1
     dev: false
 
   /ts-pnp/1.2.0_typescript@4.5.2:
@@ -12955,6 +13041,12 @@ packages:
     resolution: {integrity: sha512-Yj3yXweRc8LdRMrCC8nIc4kkjWecPAUVh0TI0OUrWXx6aX790vLcDlWca6I4vsyCGH3LpWxq0dJRcMOFoVqmeg==}
     dependencies:
       tslib: 1.14.1
+      zen-observable: 0.8.15
+    dev: false
+
+  /zen-observable-ts/1.2.3:
+    resolution: {integrity: sha512-hc/TGiPkAWpByykMwDcem3SdUgA4We+0Qb36bItSuJC9xD0XVBZoFHYoadAomDSNf64CG8Ydj0Qb8Od8BUWz5g==}
+    dependencies:
       zen-observable: 0.8.15
     dev: false
 
