@@ -5,6 +5,8 @@ import { createMemoryHistory } from "history";
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { MockedProvider } from "@apollo/react-testing";
 import { Home } from "../index";
+import { LISTINGS } from "../../../lib/graphql/queries";
+import { ListingsFilter } from "../../../lib/graphql/globalTypes";
 
 describe("Home", () => {
   window.scrollTo = () => {};
@@ -78,6 +80,96 @@ describe("Home", () => {
   });
 
   describe("premium listings", () => {
-    it("", () => {});
+    it("renders loading state when query is loading", async () => {
+      const history = createMemoryHistory();
+
+      const { queryByText } = render(
+        <MockedProvider mocks={[]}>
+          <Router history={history}>
+            <Home />
+          </Router>
+        </MockedProvider>
+      );
+
+      await waitFor(() => {
+        expect(queryByText("Premium Listings - Loading")).not.toBeNull();
+        expect(queryByText("Premium Listings")).toBeNull();
+      });
+    });
+
+    it("renders intended UI when query is successfull", async () => {
+      const listingsMock = {
+        request: {
+          query: LISTINGS,
+          variables: {
+            filter: ListingsFilter.PRICE_HIGH_TO_LOW,
+            limit: 4,
+            page: 1,
+          },
+        },
+        result: {
+          data: {
+            listings: {
+              region: null,
+              total: 10,
+              result: [
+                {
+                  id: "213123",
+                  title: "Apartment Cantik dan Nyaman",
+                  image: "image.png",
+                  address: "Karasak Baru",
+                  price: 90000,
+                  numOfGuests: 5,
+                },
+              ],
+            },
+          },
+        },
+      };
+
+      const history = createMemoryHistory();
+
+      const { queryByText } = render(
+        <MockedProvider mocks={[listingsMock]} addTypename={false}>
+          <Router history={history}>
+            <Home />
+          </Router>
+        </MockedProvider>
+      );
+
+      await waitFor(() => {
+        expect(queryByText("Premium Listings")).not.toBeNull();
+        expect(queryByText("Premium Listings - Loading")).toBeNull();
+      });
+    });
+
+    it("does not render loading state and listings ui when query is error", async () => {
+      const listingsMock = {
+        request: {
+          query: LISTINGS,
+          variables: {
+            filter: ListingsFilter.PRICE_HIGH_TO_LOW,
+            limit: 1,
+            page: 4,
+          },
+        },
+        error: new Error("Network Error"),
+      };
+
+      const history = createMemoryHistory();
+
+      const { queryByText } = render(
+        <MockedProvider mocks={[listingsMock]} addTypename={false}>
+          <Router history={history}>
+            <Home />
+          </Router>
+        </MockedProvider>
+      );
+
+      await waitFor(() => {
+        expect(queryByText("Premium Listings")).toBeNull();
+        expect(queryByText("Premium Listings - Loading")).toBeNull();
+      });
+    });
   });
 });

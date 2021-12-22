@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Layout, Row, Typography } from "antd";
 import { HomeHero } from "./components";
-import { Link, RouteComponentProps, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { displayErrorMessage } from "../../lib/utils";
 import { useQuery } from "react-apollo";
 import {
@@ -51,7 +51,7 @@ export const Home = () => {
 
   const renderHomeListingsComponent = () => {
     if (loading) {
-      return <HomeListingsSkeleton />;
+      return <HomeListingsSkeleton title="Premium Listings - Loading" />;
     }
 
     if (data && data.listings) {
