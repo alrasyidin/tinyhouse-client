@@ -10,7 +10,12 @@ import {
   displayErrorMessage,
   displaySuccessNotification,
 } from "../../../../lib/utils";
-import { HomeOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  ApartmentOutlined,
+  HomeOutlined,
+  LogoutOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
 const { Item, SubMenu } = Menu;
 
@@ -64,6 +69,11 @@ export const MenuItems = ({ viewer, setViewer }: Props) => {
       <Item key="/host">
         <Link to="/host">
           <HomeOutlined /> Host
+        </Link>
+      </Item>
+      <Item key="/browse-listings">
+        <Link to="/listings">
+          <ApartmentOutlined /> Browse Listings
         </Link>
       </Item>
       {subMenuLogin}

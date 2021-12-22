@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Layout, Row, Typography } from "antd";
 import { HomeHero } from "./components";
-import { Link, RouteComponentProps } from "react-router-dom";
+import { Link, RouteComponentProps, useHistory } from "react-router-dom";
 import { displayErrorMessage } from "../../lib/utils";
 import { useQuery } from "react-apollo";
 import {
@@ -24,7 +24,8 @@ const { Title, Paragraph } = Typography;
 const PAGE_LIMIT = 4;
 const PAGE_NUMBER = 1;
 
-export const Home = ({ history }: RouteComponentProps) => {
+export const Home = () => {
+  const history = useHistory();
   useScrollToTop();
 
   const { data, loading } = useQuery<ListingsData, ListingsVariables>(
