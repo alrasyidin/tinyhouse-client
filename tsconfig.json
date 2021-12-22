@@ -25,6 +25,7 @@
     "src/**/*"
   ],
   "exclude": [
-    "src/**/*.test.tsx"
+    "src/**/*.test.tsx",
+    "node_modules/**/*"
   ]
 }
