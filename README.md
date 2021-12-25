@@ -37,10 +37,12 @@ server url is your server api, client id and publisable key is value from Stripe
 
 ```
 npm install
-npm start
+npm run codegen:schema
+npm run codegen:generate
+npm run start
 ```
 
-Of course after you start the development server. you can start development server base on this guide [here](https://github.com/alrasyidin/tinyhouse-server)
+Codegen only can be running with after you start the development server. you can start development server base on this guide [here](https://github.com/alrasyidin/tinyhouse-server).
 
 ## Screenshot
 
