@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useLocation } from "react-router-dom";
 import { Layout, Typography, Card, Spin } from "antd";
 import { Viewer } from "../../lib/types";
 import { useLazyQuery, useMutation } from "react-apollo";
@@ -30,16 +30,20 @@ interface Props {
 }
 
 export const Login = ({ viewer, setViewer }: Props) => {
-  useScrollToTop();
-
   const [handleAuthorize, { error: codeError }] = useLazyQuery<AuthUrlData>(
     AUTH_URL,
     {
-      variables: {},
       onCompleted: (data) => {
         if (data && data.authUrl) {
-          window.location.href = data.authUrl;
+          // window.location.href = data.authUrl;
+          window.location.assign(data.authUrl);
         }
+      },
+      onError: (error) => {
+        console.log(error.message);
+        displayErrorMessage(
+          "Sorry. We weren't to unable log you in. Please try again later"
+        );
       },
     }
   );
@@ -54,10 +58,15 @@ export const Login = ({ viewer, setViewer }: Props) => {
         }
       },
     });
+
   const logInRef = useRef(logIn);
+  const location = useLocation();
+  useScrollToTop();
 
   useEffect(() => {
-    const code = new URLSearchParams(window.location.search).get("code");
+    const code = new URLSearchParams(location.search).get("code");
+    // console.log("CODE", code);
+    // console.log(window.location);
 
     if (code) {
       logInRef.current({
@@ -66,7 +75,7 @@ export const Login = ({ viewer, setViewer }: Props) => {
         },
       });
     }
-  }, []);
+  }, [location.search]);
 
   if (codeError) {
     displayErrorMessage(

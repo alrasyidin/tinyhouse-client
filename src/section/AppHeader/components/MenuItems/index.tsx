@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { useMutation } from "react-apollo";
 import { Link } from "react-router-dom";
-import { Avatar, Button, Menu } from "antd";
+import { Avatar, Button, Divider, Menu } from "antd";
 import { Viewer } from "../../../../lib/types";
 import { LogOut as LogOutData } from "../../../../lib/graphql/mutations/LogOut/__generated__/LogOut";
 import { LOG_OUT } from "../../../../lib/graphql/mutations";
@@ -12,8 +12,11 @@ import {
 } from "../../../../lib/utils";
 import {
   ApartmentOutlined,
+  BankOutlined,
   HomeOutlined,
   LogoutOutlined,
+  PlayCircleOutlined,
+  UpCircleOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 
@@ -42,22 +45,27 @@ export const MenuItems = ({ viewer, setViewer }: Props) => {
   const handleLogOut = () => {
     logOut();
   };
+
   const subMenuLogin =
     viewer.id && viewer.avatar ? (
-      <SubMenu title={<Avatar src={viewer.avatar} />} key={"menu"}>
-        <Item key={`/user`}>
+      <SubMenu
+        title={<Avatar src={viewer.avatar} />}
+        key={"menu"}
+        // disabled={true}
+      >
+        <Item className="menu__item" key={`/user`}>
           <Link to={`/user/${viewer.id}`}>
             <UserOutlined /> Profile
           </Link>
         </Item>
-        <Item key={`/logout`}>
+        <Item className="menu__item" key={`/logout`}>
           <div onClick={handleLogOut}>
             <LogoutOutlined /> Log Out
           </div>
         </Item>
       </SubMenu>
     ) : (
-      <Item key={`/login`}>
+      <Item className="menu__item" key={`/login`}>
         <Link to="/login">
           <Button type="primary">Sign In</Button>
         </Link>
@@ -65,13 +73,13 @@ export const MenuItems = ({ viewer, setViewer }: Props) => {
     );
 
   return (
-    <Menu mode="horizontal" selectable={false} className="menu">
-      <Item key="/host">
+    <Menu mode="horizontal" className="menu" selectable={false}>
+      <Item className="menu__item" key="/host">
         <Link to="/host">
           <HomeOutlined /> Host
         </Link>
       </Item>
-      <Item key="/browse-listings">
+      <Item className="menu__item" key="/browse-listings">
         <Link to="/listings">
           <ApartmentOutlined /> Browse Listings
         </Link>

@@ -118,6 +118,13 @@ html {
   border: 0;
   width: 100%;
   padding: 0 20px;
+  justify-content: end;
+}
+
+@media only screen and (min-width: 600px) {
+  .menu {
+    min-width: 400px;
+  }
 }
 
 .log-in {

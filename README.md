@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+# Tinyhouse Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Fullstack Typescript, React and GraphQL Application. This app made by follow this amazing course https://www.newline.co/tinyhouse. This only hold on frontend-side if you wonder the server-side located here: https://github.com/alrasyidin/tinyhouse-server. You can also visit the final application that has been deployed on the heroku platform here: https://tinyhouse-app-v2.herokuapp.com.
 
-## Available Scripts
+## Technology
 
-In the project directory, you can run:
+- React
+- React Router DOM
+- GraphQL with Apollo Client
+- Ant Design
+- Typescript
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Integration sign-in / sign-up with Google OAuth.
+- Upload and integrate Image with Cloudinary API.
+- Browse listing base on geolocation search request.
+- Filter and sort listing on certain condition
+- Create listing
+- Integraton online payment with Stripe API
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Usage
 
-### `npm test`
+### Env Variable
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+create .env variable at the top of root project like this:
 
-### `npm run build`
+```
+REACT_APP_SERVER_URL=
+REACT_APP_S_CLIENT_ID=
+REACT_APP_S_PUBLISHABLE_KEY=
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+server url is your server api, client id and publisable key is value from Stripe API.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Client
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm install
+npm start
+```
 
-### `npm run eject`
+Of course after you start the development server. you can start development server base on this guide [here](https://github.com/alrasyidin/tinyhouse-server)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Screenshot
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![landing page](https://i.postimg.cc/05yKq0NQ/1.png)
+![listings page](https://i.postimg.cc/BvJQBJL6/2.png)
+![user profile page](https://i.postimg.cc/yYSdVQCV/3.png)
+![listing detail page](https://i.postimg.cc/HkwkMrLR/4.png)
+![create listing page](https://i.postimg.cc/mgfrhYT7/5.png)
